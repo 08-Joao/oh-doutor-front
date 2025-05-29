@@ -4,10 +4,10 @@
 @theme inline {
   /* Cores Base */
   --color-background: var(--background);
-  --color-foreground: var(--foreground); /* Cor principal do texto */
+  --color-foreground: var(--foreground);
   --color-elevation-1: var(--elevation-1);
   --color-elevation-2: var(--elevation-2);
-  --color-text-primary: var(--text-primary); /* Texto com cor primária (ex: links) */
+  --color-text-primary: var(--text-primary);
 
   /* Cores da Marca e Acento */
   --color-primary: var(--primary);
@@ -22,49 +22,49 @@
   /* Cores Semânticas de Estado */
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
-  --color-error: var(--error); /* Mapeado para destructive abaixo */
+  --color-error: var(--error);
   --color-error-foreground: var(--error-foreground);
   --color-warning: var(--warning);
   --color-warning-foreground: var(--warning-foreground);
   --color-info: var(--info);
   --color-info-foreground: var(--info-foreground);
 
-  /* Mapeamentos para nomes de variáveis existentes no tema */
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-destructive: var(--destructive); /* Usa a cor base --error */
-  --color-destructive-foreground: var(--destructive-foreground); /* Usa a cor base --error-foreground */
-  
+  /* Componentes */
+  --color-card: var(--elevation-1);
+  --color-card-foreground: var(--foreground);
+  --color-popover: var(--elevation-2);
+  --color-popover-foreground: var(--foreground);
+  --color-muted: var(--tertiary);
+  --color-muted-foreground: var(--tertiary-foreground);
+  --color-destructive: var(--error);
+  --color-destructive-foreground: var(--error-foreground);
+
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* Cores do Sidebar */
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  /* Sidebar */
+  --color-sidebar: var(--elevation-1);
+  --color-sidebar-foreground: var(--foreground);
+  --color-sidebar-primary: var(--primary);
+  --color-sidebar-primary-foreground: var(--primary-foreground);
+  --color-sidebar-accent: var(--accent);
+  --color-sidebar-accent-foreground: var(--accent-foreground);
+  --color-sidebar-border: var(--border);
+  --color-sidebar-ring: var(--ring);
 
-  /* Cores de Gráficos */
+  /* Gráficos */
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
 
-  /* Fontes (mantidas do original) */
+  /* Fontes */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  /* Raio (mantido e expandido do original) */
+  /* Raio */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -74,133 +74,109 @@
 :root {
   --radius: 0.625rem;
 
-  /* Paleta Principal - Light Theme (Foco no Verde) */
-  --background: oklch(0.985 0.003 150);
-  --foreground: oklch(0.45 0.01 150);       /* Cinza médio para texto principal (AJUSTADO) */
-  --elevation-1: oklch(0.96 0.003 150);
-  --elevation-2: oklch(0.93 0.005 150);
-  --text-primary: oklch(0.45 0.01 150);          /* Para texto com cor primária, como links */
+  /* Light Theme */
+  --background: #ffffff;
+  --foreground: #212b36;
+  --elevation-1: #f5f9fc;
+  --elevation-2: #e9edef;
+  --text-primary: #212b36;
 
-  --primary: oklch(0.60 0.12 155);         /* Verde Principal */
-  --primary-foreground: oklch(0.99 0.002 155);
+  --primary: #37be9e;
+  --primary-foreground: #ffffff;
 
-  --secondary: oklch(0.70 0.08 170);       /* Verde-azulado claro */
-  --secondary-foreground: oklch(0.15 0.01 170);
+  --secondary: #00b8d9;
+  --secondary-foreground: #ffffff;
 
-  --accent: oklch(0.55 0.15 230);          /* Azul calmo como acento */
-  --accent-foreground: oklch(0.99 0.003 230);
+  --accent: #179e7e;
+  --accent-foreground: #ffffff;
 
-  --tertiary: oklch(0.88 0.005 150);
-  --tertiary-foreground: oklch(0.45 0.01 150); /* Texto para elementos terciários, já é um cinza médio */
+  --tertiary: #e9edef;
+  --tertiary-foreground: #41525d;
 
-  --success: oklch(0.65 0.15 140);         /* Verde positivo para sucesso */
-  --success-foreground: oklch(0.99 0.002 140);
+  --success: #42cba5;
+  --success-foreground: #073042;
 
-  --error: oklch(0.58 0.22 28);            /* Vermelho para erro */
-  --error-foreground: oklch(0.99 0.003 28);
+  --error: #ff3366;
+  --error-foreground: #ffffff;
 
-  --warning: oklch(0.78 0.18 85);           /* Âmbar para aviso */
-  --warning-foreground: oklch(0.30 0.05 85);
+  --warning: #ffab00;
+  --warning-foreground: #212b36;
 
-  --info: oklch(0.60 0.17 220);             /* Azul para informação */
-  --info-foreground: oklch(0.99 0.003 220);
+  --info: #00b8d9;
+  --info-foreground: #073042;
 
-  /* Mapeamento para variáveis de componentes existentes */
-  --card: var(--elevation-1);
-  --card-foreground: var(--foreground); 
-  --popover: var(--elevation-2);
-  --popover-foreground: var(--foreground); 
-  
-  --muted: var(--tertiary);
-  --muted-foreground: var(--tertiary-foreground); /* Usa o cinza médio já definido para tertiary-foreground */
-  
-  --destructive: var(--error);
-  --destructive-foreground: var(--error-foreground);
+  --border: #e7eaf0;
+  --input: #f6f6f6;
+  --ring: #37be9e;
 
-  --border: oklch(0.90 0.004 150);
-  --input: var(--elevation-1); 
-  --ring: var(--primary);
+  /* Charts */
+  --chart-1: #42cba5;
+  --chart-2: #00b8d9;
+  --chart-3: #ffab00;
+  --chart-4: #ff3366;
+  --chart-5: #073042;
 
-  /* Cores de Gráficos - Harmonizadas com a paleta verde */
-  --chart-1: oklch(0.7 0.10 250);   /* Roxo/Azul contrastante */
-  --chart-2: oklch(0.75 0.12 190);  /* Ciano/Teal */
-  --chart-3: oklch(0.8 0.08 90);    /* Amarelo suave */
-  --chart-4: oklch(0.65 0.09 30);   /* Coral/Laranja suave */
-  --chart-5: oklch(0.50 0.07 160);  /* Tom de verde mais escuro/diferente */
-
-  /* Cores do Sidebar */
-  --sidebar: var(--elevation-1); 
-  --sidebar-foreground: var(--foreground);
-  --sidebar-primary: var(--primary);
-  --sidebar-primary-foreground: var(--primary-foreground);
-  --sidebar-accent: var(--accent);
-  --sidebar-accent-foreground: var(--accent-foreground);
-  --sidebar-border: var(--border);
-  --sidebar-ring: var(--ring);
+  /* Sidebar */
+  --sidebar: #f5f9fc;
+  --sidebar-foreground: #212b36;
+  --sidebar-primary: #37be9e;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #179e7e;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #e7eaf0;
+  --sidebar-ring: #37be9e;
 }
 
 .dark {
-  /* Paleta Principal - Dark Theme (Foco no Verde) */
-  --background: oklch(0.15 0.005 150);
-  --foreground: oklch(0.95 0.003 150); /* Texto claro sobre fundo escuro (MANTIDO) */
-  --elevation-1: oklch(0.20 0.006 150);
-  --elevation-2: oklch(0.25 0.008 150);
-  --text-primary: oklch(0.95 0.003 150); 
+  /* Dark Theme */
+  --background: #212b36;
+  --foreground: #f5f9fc;
+  --elevation-1: #41525d;
+  --elevation-2: #333f48;
+  --text-primary: #f5f9fc;
 
-  --primary: oklch(0.65 0.13 155);         /* Verde Principal (Dark) */
-  --primary-foreground: oklch(0.15 0.005 155);
+  --primary: #179e7e;
+  --primary-foreground: #daf7f3;
 
-  --secondary: oklch(0.75 0.09 170);       /* Verde-azulado claro (Dark) */
-  --secondary-foreground: oklch(0.95 0.003 170);
+  --secondary: #00b8d9;
+  --secondary-foreground: #daf7f3;
 
-  --accent: oklch(0.60 0.16 230);          /* Azul calmo como acento (Dark) */
-  --accent-foreground: oklch(0.15 0.01 230);
+  --accent: #37be9e;
+  --accent-foreground: #daf7f3;
 
-  --tertiary: oklch(0.30 0.008 150);
-  --tertiary-foreground: oklch(0.70 0.005 150); /* Texto mais claro para elementos terciários no tema escuro */
+  --tertiary: #637381;
+  --tertiary-foreground: #e9edef;
 
-  --success: oklch(0.70 0.16 140);         /* Verde positivo (Dark) */
-  --success-foreground: oklch(0.15 0.005 140);
+  --success: #42cba5;
+  --success-foreground: #daf7f3;
 
-  --error: oklch(0.65 0.23 28);            /* Vermelho (Dark) */
-  --error-foreground: oklch(0.99 0.003 28);
+  --error: #ff3366;
+  --error-foreground: #f5f5f7;
 
-  --warning: oklch(0.82 0.19 85);           /* Âmbar (Dark) */
-  --warning-foreground: oklch(0.25 0.04 85);
+  --warning: #ffab00;
+  --warning-foreground: #f5f9fc;
 
-  --info: oklch(0.68 0.18 220);             /* Azul (Dark) */
-  --info-foreground: oklch(0.15 0.01 220);
+  --info: #00b8d9;
+  --info-foreground: #daf7f3;
 
-  /* Mapeamento para variáveis de componentes existentes */
-  --card: var(--elevation-1);
-  --card-foreground: var(--foreground);
-  --popover: var(--elevation-2);
-  --popover-foreground: var(--foreground);
+  --border: #41525d;
+  --input: #333f48;
+  --ring: #179e7e;
 
-  --muted: var(--tertiary);
-  --muted-foreground: var(--tertiary-foreground);
+  /* Charts */
+  --chart-1: #42cba5;
+  --chart-2: #00b8d9;
+  --chart-3: #ffab00;
+  --chart-4: #ff3366;
+  --chart-5: #daf7f3;
 
-  --destructive: var(--error);
-  --destructive-foreground: var(--error-foreground);
-  
-  --border: oklch(0.35 0.008 150);
-  --input: var(--elevation-1); 
-  --ring: var(--primary);
-
-  /* Cores de Gráficos - Dark Theme */
-  --chart-1: oklch(0.72 0.11 250);
-  --chart-2: oklch(0.78 0.13 190);
-  --chart-3: oklch(0.82 0.09 90);
-  --chart-4: oklch(0.68 0.10 30);
-  --chart-5: oklch(0.55 0.08 160);
-
-  /* Cores do Sidebar - Dark Theme */
-  --sidebar: var(--elevation-1);
-  --sidebar-foreground: var(--foreground);
-  --sidebar-primary: var(--primary);
-  --sidebar-primary-foreground: var(--primary-foreground);
-  --sidebar-accent: var(--accent);
-  --sidebar-accent-foreground: var(--accent-foreground);
-  --sidebar-border: var(--border);
-  --sidebar-ring: var(--ring);
+  /* Sidebar */
+  --sidebar: #41525d;
+  --sidebar-foreground: #f5f9fc;
+  --sidebar-primary: #179e7e;
+  --sidebar-primary-foreground: #daf7f3;
+  --sidebar-accent: #37be9e;
+  --sidebar-accent-foreground: #daf7f3;
+  --sidebar-border: #333f48;
+  --sidebar-ring: #179e7e;
 }
