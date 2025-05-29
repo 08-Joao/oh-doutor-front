@@ -28,7 +28,7 @@ function Login() {
   return (
     <div className="relative flex justify-center items-center h-screen w-screen overflow-hidden bg-background from-primary via-secondary to-accent">
       <div className="relative z-10 group">
-        <div className="backdrop-blur-2xl bg-elevation-1/10 border border-border/20 rounded-3xl p-12 shadow-2xl transform transition-all duration-500 hover:scale-105 hover:shadow-primary/25 hover:shadow-2xl">
+        <div className="backdrop-blur-2xl bg-elevation-1/10 border border-border/20 rounded-3xl p-12 shadow-2xl transform transition-all duration-500 hover:scale-102 hover:shadow-primary/25 hover:shadow-2xl">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-foreground mb-2 leading-tight">
               Entrar
