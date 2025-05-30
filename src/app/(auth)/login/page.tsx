@@ -1,8 +1,11 @@
 "use client"
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { LoginInput } from '@/models/dtos/auth'
 import { Eye, EyeClosed } from '@solar-icons/react'
 import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import { useAuth } from '@/contexts/AuthContext'
 
 function Login() {
   const [email, setEmail] = useState('')
@@ -10,9 +13,17 @@ function Login() {
   const [showPassword, setShowPassword] = useState(false)
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
   const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
+  const { user, login } = useAuth()
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    if (user) {
+      router.push('/')
+    }
+  }, [user, router])
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
       setMousePos({ x: e.clientX, y: e.clientY })
     }
     window.addEventListener('mousemove', handleMouseMove)
@@ -21,8 +32,16 @@ function Login() {
 
   const handleLogin = async () => {
     setIsLoading(true)
-    // Simulate login process
-    setTimeout(() => setIsLoading(false), 2000)
+    try {
+      const success = await login({ email, password });
+      if (success) {
+        router.push('/');
+      }
+    } catch (err) { 
+      console.warn(err);
+    } finally { 
+      setIsLoading(false);
+    }
   }
 
   return (

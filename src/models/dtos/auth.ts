@@ -4,6 +4,15 @@ export interface LoginInput {
 }
 
 export interface LoginOutput {
-  accessToken: string;
-  refreshToken: string;
+  data: {
+    token: string;
+  }
+}
+
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  clinicId: string;
 }

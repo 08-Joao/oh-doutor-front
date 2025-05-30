@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import { User, Stethoscope, Logout3, RoundAltArrowLeft } from '@solar-icons/react';
 import { Button } from '../ui/button';
 import { menuOptions } from '@/utils/constants/menu-options';
+import { useAuth } from '@/contexts/AuthContext';
 
 interface SidebarProps {
   isOpen?: boolean;
@@ -15,9 +16,10 @@ function Sidebar({ isOpen, onClose }: SidebarProps) {
   const pathname = usePathname()
   const [isDesktopOpen, setIsDesktopOpen] = useState(true)
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+  const { logout } = useAuth()
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       setMousePos({ x: e.clientX, y: e.clientY })
     }
     window.addEventListener('mousemove', handleMouseMove)
@@ -107,6 +109,7 @@ function Sidebar({ isOpen, onClose }: SidebarProps) {
           <button className={`relative w-12 h-12 cursor-pointer rounded-xl bg-elevation-1/30 backdrop-blur-sm border border-border/20 hover:bg-elevation-1/50 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 flex items-center justify-center transition-all duration-300 transform hover:scale-105 group/logout
             ${!isDesktopOpen ? 'lg:hidden' : ''}
             ${!isOpen && 'hidden lg:flex'}`}
+            onClick={logout}
           >
             <Logout3 weight='BoldDuotone' size={18} className="text-muted-foreground group-hover/logout:text-primary transition-colors duration-300" />
           </button>

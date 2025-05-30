@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Public_Sans, Roboto } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/providers/theme-provider";
+import { AuthProvider } from '@/contexts/AuthContext'
 
 
 const publicSans =  Public_Sans({
@@ -25,9 +26,11 @@ export default function RootLayout({
       <body
         className={`${publicSans.variable} ${roboto.variable}  antialiased`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
-        </ThemeProvider>
+        <AuthProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            {children}
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );
