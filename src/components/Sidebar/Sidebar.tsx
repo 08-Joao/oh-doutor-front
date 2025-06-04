@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { User, Stethoscope, Logout3, RoundAltArrowLeft } from '@solar-icons/react';
 import { Button } from '../ui/button';
-import { menuOptions } from '@/utils/constants/menu-options';
+import { menuOptions } from '@/utils/constants/sidebar-options';
 import { useAuth } from '@/contexts/AuthContext';
 
 interface SidebarProps {

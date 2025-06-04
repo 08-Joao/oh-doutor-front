@@ -1,4 +1,4 @@
-import { Buildings, ClipboardList, Home, User, UsersGroupRounded } from "@solar-icons/react";
+import { Buildings, ClipboardList, Home, Stethoscope, User, UsersGroupRounded } from "@solar-icons/react";
 
 export const menuOptions = [
     {
@@ -9,12 +9,12 @@ export const menuOptions = [
     {
         name: "Exames",
         icon: <ClipboardList weight='BoldDuotone' size={24}/>,
-        page: "/appointments"
+        page: "/exames"
     },
     {
-        name: "Clínica",
+        name: "Clínicas",
         icon: <Buildings weight='BoldDuotone' size={24}/>,
-        page: "/clinica"
+        page: "/clinicas"
     },
     {
         name: "Pacientes",
@@ -22,8 +22,8 @@ export const menuOptions = [
         page: "/pacientes"
     },
     {
-        name: "Usuários",
-        icon: <User weight='BoldDuotone' size={24}/>,
-        page: "/usuarios"
+        name: "Salas de Atendimento",
+        icon: <Stethoscope weight='BoldDuotone' size={24}/>,
+        page: "/salas"
     }
 ]

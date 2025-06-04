@@ -40,6 +40,18 @@ const Api = {
         } catch (err) {
             throw err;
         }
+    },
+
+    getAllExames: async function() {
+        try {
+            const response = await backendRoute.get('/exams', {
+                withCredentials: true
+            });
+
+            return response;
+        } catch (err) {
+            throw err;
+        }
     }
 }
 
