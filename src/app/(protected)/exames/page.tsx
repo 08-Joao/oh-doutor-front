@@ -4,7 +4,11 @@ import PageBody from '@/components/PageBody/PageBody'
 import { List } from '@solar-icons/react/ssr'
 import React from 'react'
 
+
 function Exames() {
+
+
+
   return (
     <Layout>
         <PageBody 

@@ -3,6 +3,7 @@
 import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import LoadingScreen from './LoadingScreen';
 
 interface ProtectedRouteProps {
     children: React.ReactNode;
@@ -24,7 +25,7 @@ export default function ProtectedRoute({ children, allowedRoles }: ProtectedRout
     }, [user, loading, router, allowedRoles]);
 
     if (loading) {
-        return <div>Loading...</div>; // You can replace this with a proper loading component
+        return <LoadingScreen />
     }
 
     if (!user) {
