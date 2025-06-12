@@ -1,7 +1,7 @@
 import ListaExames from '@/components/Exames/ListaExames'
 import Layout from '@/components/Layout/Layout'
 import PageBody from '@/components/PageBody/PageBody'
-import { List } from '@solar-icons/react/ssr'
+import { AddSquare, List } from '@solar-icons/react/ssr'
 import React from 'react'
 
 
@@ -16,8 +16,13 @@ function Exames() {
           menuOptions={[
             {
                 name: "Lista de Exames",
-                icon: <List weight='BoldDuotone' size={24} />,
+                icon: <List weight='BoldDuotone' className="text-primary" size={24} />,
                 content: <ListaExames /> 
+            },
+            {
+                name: "Criar Exames",
+                icon: <AddSquare weight='BoldDuotone' className="text-primary" size={24} />,
+                content: <div>Conteúdo dos Exames</div>
             },
           ]}
         />

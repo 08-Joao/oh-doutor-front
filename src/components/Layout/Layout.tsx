@@ -7,7 +7,7 @@ function Layout({ children }: { children: React.ReactNode }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen bg-background/60">
       <Sidebar isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
       <div className="flex-1 flex flex-col">
         <Navbar onMobileMenuClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />

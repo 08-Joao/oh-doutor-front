@@ -4,6 +4,7 @@ import Api from '@/services/Api';
 import { useEffect, useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { AddSquare, Calendar, ClockCircle, Dollar, Magnifer, Pulse } from '@solar-icons/react';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 
 export default function ListaExames() {
     const [exames, setExames] = useState<GetExam[]>([]);
@@ -115,29 +116,29 @@ export default function ListaExames() {
                     </button>
                 </div>
 
-                <div className="w-full relative backdrop-blur-xl bg-white/90 border border-border/20 rounded-2xl p-6 shadow-lg">
+                <div className="w-full relative backdrop-blur-xl bg-background/90 border border-border/20 rounded-2xl p-6 shadow-lg">
                     <div className="w-full flex flex-col sm:flex-row gap-4">
                         <div className="relative flex-1 min-w-0">
-                            <Magnifer weight="BoldDuotone" size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
+                            <Magnifer weight="BoldDuotone" size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground" />
                             <Input
                                 type="text"
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="w-full pl-12 h-12 bg-white border-border/30 rounded-xl text-foreground placeholder-muted-foreground transition-all duration-300 focus:border-primary/50 focus:shadow-lg focus:shadow-primary/20 text-lg"
+                                className="w-full pl-12 h-12 bg-border border-border/30 rounded-xl text-foreground placeholder-muted-foreground transition-all duration-300 focus:border-primary/50 focus:shadow-lg focus:shadow-primary/20 text-lg"
                                 placeholder="Buscar exames..."
                             />
                         </div>
-                        <select
-                            value={selectedStatus}
-                            onChange={(e) => setSelectedStatus(e.target.value)}
-                            className="h-12 px-4 bg-white border border-border/30 rounded-xl text-foreground transition-all duration-300 focus:border-primary/50 focus:shadow-lg focus:shadow-primary/20 sm:min-w-[200px]"
-                        >
-                            <option value="all">Todos os Status</option>
-                            <option value={ExamStatus.ACTIVE}>Ativo</option>
-                            <option value={ExamStatus.INACTIVE}>Inativo</option>
-                            <option value={ExamStatus.SUSPENDED}>Suspenso</option>
-                            <option value={ExamStatus.DRAFT}>Rascunho</option>
-                        </select>
+                        <DropdownMenu>
+                            <DropdownMenuTrigger>Todos os Status</DropdownMenuTrigger>
+                            <DropdownMenuContent>
+                                <DropdownMenuLabel>Selecione um status</DropdownMenuLabel>
+                                <DropdownMenuItem onClick={() => setSelectedStatus('all')}>Todos os Status</DropdownMenuItem>
+                                <DropdownMenuItem onClick={() => setSelectedStatus(ExamStatus.ACTIVE)}>Ativo</DropdownMenuItem>
+                                <DropdownMenuItem onClick={() => setSelectedStatus(ExamStatus.INACTIVE)}>Inativo</DropdownMenuItem>
+                                <DropdownMenuItem onClick={() => setSelectedStatus(ExamStatus.SUSPENDED)}>Suspenso</DropdownMenuItem>
+                                <DropdownMenuItem onClick={() => setSelectedStatus(ExamStatus.DRAFT)}>Rascunho</DropdownMenuItem>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
                     </div>
                 </div>
             </div>
@@ -147,7 +148,7 @@ export default function ListaExames() {
                     {filteredExames.map((exame) => (
                         <div
                             key={exame.id}
-                            className="group relative backdrop-blur-xl bg-white/90 border border-border/20 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 transform hover:scale-[1.02] hover:border-primary/30"
+                            className="group relative backdrop-blur-xl bg-background border border-border/20 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 transform hover:scale-[1.02] hover:border-primary/30"
                         >
                         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         
@@ -157,16 +158,20 @@ export default function ListaExames() {
                                     <h3 className="text-lg font-semibold text-foreground line-clamp-2 mb-2">
                                         {exame.name}
                                     </h3>
-                                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                        <Pulse weight="BoldDuotone" size={16} className="text-primary" />
-                                        <span>{exame.modality.name}</span>
-                                        <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary">
-                                            {exame.modality.acronym}
-                                        </span>
+                                    <div className="flex items-center gap-2 text-sm text-muted-foreground w-full justify-between">
+                                        <div className="flex justfify-center items-center gap-2">
+                                            <Pulse weight="BoldDuotone" size={16} className="text-primary" />
+                                            <span className='w-full'>{exame.modality.name}</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className={`px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${getStatusColor(exame.status)} backdrop-blur-sm border`}>
+                                <div className="flex flex-col gap-4 items-end">
+                                    <div className={`px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${getStatusColor(exame.status)} backdrop-blur-sm border`}>
                                     {getStatusText(exame.status)}
+                                </div>
+                                <span className=" text-xs px-2 py-1 w-fit h-fit rounded-full bg-primary/10 text-primary">
+                                    {exame.modality.acronym}
+                                </span>
                                 </div>
                             </div>
 
@@ -221,14 +226,10 @@ export default function ListaExames() {
                                         {new Date(exame.createdAt).toLocaleDateString('pt-BR')}
                                     </span>
                                 </div>
-                                <button className="opacity-0 group-hover:opacity-100 transition-all duration-300 bg-gradient-to-r from-primary/10 to-secondary/10 hover:from-primary/20 hover:to-secondary/20 text-primary border border-primary/20 hover:border-primary/30 px-3 py-1 rounded text-sm">
-                                    Ver Detalhes
-                                </button>
                             </div>
                         </div>
 
-                        <div className="absolute -top-2 -right-2 w-4 h-4 bg-gradient-to-r from-primary to-secondary rounded-full opacity-0 group-hover:opacity-80 transition-opacity duration-300 animate-pulse"></div>
-                        <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-gradient-to-r from-accent to-primary rounded-full opacity-0 group-hover:opacity-80 transition-opacity duration-300 animate-pulse animation-delay-500"></div>
+                        
                     </div>
                 ))}
             </div>

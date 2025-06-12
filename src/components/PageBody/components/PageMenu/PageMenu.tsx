@@ -27,7 +27,7 @@ function PageMenu({ menuOptions }: PageMenuProps) {
     };
 
     return (
-        <div className="flex justify-center items-center flex-col gap-4">
+        <div className="flex justify-center items-center flex-col gap-4 ">
             <div className="w-full flex items-center justify-start relative">
                 <div 
                     className="absolute top-0 h-full bg-elevation-2 rounded transition-all duration-300 ease-in-out z-0"

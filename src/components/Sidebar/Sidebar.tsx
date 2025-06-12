@@ -16,7 +16,7 @@ function Sidebar({ isOpen, onClose }: SidebarProps) {
   const pathname = usePathname()
   const [isDesktopOpen, setIsDesktopOpen] = useState(true)
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
-  const { logout } = useAuth()
+  const { logout, user } = useAuth() // Added user from useAuth
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -29,6 +29,20 @@ function Sidebar({ isOpen, onClose }: SidebarProps) {
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       onClose?.()
+    }
+  }
+
+  
+  const getRoleDisplay = (role: string) => {
+    switch (role) {
+      case 'admin':
+        return 'Administrador'
+      case 'root':
+        return 'Raiz'
+      case 'owner':
+        return 'Proprietário'
+      default:
+        return 'Usuário'
     }
   }
 
@@ -102,8 +116,12 @@ function Sidebar({ isOpen, onClose }: SidebarProps) {
             ${isDesktopOpen ? 'lg:opacity-100' : 'lg:opacity-0 lg:hidden'}
             ${!isOpen && 'hidden lg:block'}`}
           >
-            <h3 className="text-sm font-semibold text-foreground">Usuário</h3>
-            <p className="text-xs text-muted-foreground">Administrador</p>
+            <h3 className="text-sm font-semibold text-foreground">
+              {user?.name || 'Usuário'}
+            </h3>
+            <p className="text-xs text-muted-foreground">
+              {user?.role ? getRoleDisplay(user.role) : 'Carregando...'}
+            </p>
           </div>
           
           <button className={`relative w-12 h-12 cursor-pointer rounded-xl bg-elevation-1/30 backdrop-blur-sm border border-border/20 hover:bg-elevation-1/50 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 flex items-center justify-center transition-all duration-300 transform hover:scale-105 group/logout
